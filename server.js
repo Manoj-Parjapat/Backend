@@ -15,15 +15,15 @@ app.use(express.json());
 // static serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// ✅ Root route (यह जोड़ना जरूरी है)
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running successfully!");
+});
+
 // routes
 app.use('/auth', authRoutes);
 app.use('/news', newsRoutes);
 app.use('/upload', uploadRoutes);
-
-// ✅ Root route
-app.get("/", (req, res) => {
-  res.send("Backend is running successfully ✅");
-});
 
 // mongodb connect
 const MONGO = process.env.MONGO_URI || 'mongodb://localhost:27017/aapnoalwar';
