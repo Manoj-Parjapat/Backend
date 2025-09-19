@@ -20,6 +20,11 @@ app.use('/auth', authRoutes);
 app.use('/news', newsRoutes);
 app.use('/upload', uploadRoutes);
 
+// ✅ Root route
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully ✅");
+});
+
 // mongodb connect
 const MONGO = process.env.MONGO_URI || 'mongodb://localhost:27017/aapnoalwar';
 mongoose.connect(MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
